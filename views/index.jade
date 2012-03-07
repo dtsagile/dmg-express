@@ -1,0 +1,54 @@
+!!! 5
+html
+head
+    meta(http-equiv='Content-type', content='text/html; charset=utf-8')
+    title Real-Time Damage Assessment Demo
+    script(src='/socket.io/socket.io.js')
+    link(href='http://fonts.googleapis.com/css?family=PT+Sans+Narrow', rel='stylesheet', type='text/css')
+    link(href='http://fonts.googleapis.com/css?family=Trade+Winds', rel='stylesheet', type='text/css')
+    link(href='css/app.css', rel='stylesheet', type='text/css')  
+    script(src='js/app.js', type='text/javascript')  
+    script(type='text/javascript')
+      $(function () {
+      console.log('initing the app...')
+      Map.Controller.init();
+      });
+    style
+      #drawing li{float:left;} 
+      .controls{float:right;}
+      #titles{float:left;width:601px;}
+      #subtitle{float:left;width:300px;}
+      #message{text-align:center;} 
+      .clear{clear:both;} 
+      #tools{float:right;margin-top:20px;} 
+      #tools ul li{cursor:pointer;} 
+      #tools ul li:hover{-webkit-transform:scale(1.2); -moz-transform:scale(1.2);}
+      #mode-switch{float:left;width:600px;}
+
+    header
+      div#titles
+        h1#mode-switch Damage Assessment Console
+        h4#subtitle.clear NodeJs + Socket.io
+            span#userCount
+      div#tools
+         ul#drawing
+            li(data-type='fire')
+                img(src='/images/fire.png')
+            li(data-type='deaths')
+                img(src='/images/deaths.png')
+            li(data-type='road-damage')
+                img(src='/images/road-damage.png') 
+            li(data-type='road-closed') 
+                img(src='/images/road-impassable.png')
+            li(data-type='building-damage') 
+                img(src='/images/damaged-building.png')
+            li(data-type='zombies') 
+                img(src='/images/destroyed-building.png')
+          h4#message
+      div.clear        
+    div#map
+    section
+      div.controls
+        a#toggle-drive.button(href='#') Drive Map
+        
+       

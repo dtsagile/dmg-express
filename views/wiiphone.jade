@@ -1,0 +1,56 @@
+!!! 5
+html
+  head
+    meta(charset='utf-8')
+    meta(name='viewport', content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0')
+    title Phone play
+    script(src='socket.io/socket.io.js')
+    link(href='http://fonts.googleapis.com/css?family=Six+Caps', rel='stylesheet', type='text/css')
+    script(src='javascripts/zepto.js')
+    script(src='javascripts/phone.controller.js', type='text/javascript')
+    script(type='text/javascript')
+      $(function () {
+      Phone.Controller.init();
+      });
+    style(type='text/css')
+      body {
+      font-family: sans-serif;
+      }
+      .main {
+      border: 1px solid black;
+      box-shadow: 10px 10px 5px #888;
+      border-radius: 12px;
+      padding: 20px;
+      background-color: #ddd;
+      margin: 25px;
+      width: 250px;
+      margin-left:auto;
+      margin-right:auto;
+      }
+      .logo {
+      width:105px;
+      margin-left: auto;
+      margin-right: auto;
+      display: block;
+      padding: 15px;
+      }
+      .container {
+      -webkit-perspective: 300; perspective: 300;
+      }
+      #up{padding:10px;background-color:#FF0000;}
+  body
+    .main
+      table
+        tr
+          td
+           #up UP
+        tr
+          td TILT
+          td#tilt
+        tr
+          td Action
+          td#action
+        tr
+          td UPDN
+          td#updn
+        
