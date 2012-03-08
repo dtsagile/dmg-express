@@ -129,13 +129,13 @@ Map.Controller = (function ($) {
 		$('.circle-container').on('click','.circle', function(){
 		  console.log('got circle click');
 		  if(_menuOpen){      
-		    move('#fire').ease('in-out').y(0).rotate(-360).end();
-        move('#deaths').ease('in-out').y(0).rotate(-360).end();
-        move('#road-damage').ease('in-out').y(0).rotate(-360).end();
-        move('#road-impassable').ease('in-out').y(0).rotate(-360).end();
-        move('#damaged-building').ease('in-out').y(0).rotate(-360).end(); 
-        move('#destroyed-building').ease('in-out').y(0).rotate(-360).end(); 
-        move('#gps').ease('in-out').x(0).rotate(-360).end();
+		    move('#fire').ease('in-out').y(0).rotate(360).end();
+        move('#deaths').ease('in-out').y(0).rotate(360).end();
+        move('#road-damage').ease('in-out').y(0).rotate(360).end();
+        move('#road-impassable').ease('in-out').y(0).rotate(360).end();
+        move('#damaged-building').ease('in-out').y(0).rotate(360).end(); 
+        move('#destroyed-building').ease('in-out').y(0).rotate(360).end(); 
+        move('#gps').ease('in-out').x(0).rotate(360).end();
 		    _menuOpen = false;
 		  } else {
 		    move('#fire').ease('in-out').y(-210).rotate(-360).end();
