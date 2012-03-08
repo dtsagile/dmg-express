@@ -11,6 +11,9 @@ var util = require('util'),
     //http://ags2.dtsagile.com/ArcGIS/rest/services/EMS/DamageAssessments/FeatureServer/0/
     //query?objectIds=&where=1%3D1&time=&geometry=&geometryType=esriGeometryEnvelope&inSR=&s
     //patialRel=esriSpatialRelIntersects&relationParam=&outFields=*&returnGeometry=true&outSR=&returnCountOnly=false&returnIdsOnly=false&f=pjson
+        //var nd = new Date();
+        //var yesterdayTicks = nd.setDate(nd.getDate() - 1);
+        
         var query = {
             'where' :'1=1',
             'outFields':'*',
@@ -42,12 +45,16 @@ var util = require('util'),
           
 	};
     
+    _getCurrentTicks = function(){
+        var date = new Date();
+		return = date.getTime() - (date.getTimezoneOffset() * 60000);
+        
+    }
     
     
     _addFeature = function(data, onSuccess, onError) {
         console.log('Starting call to AddFeatures...'); 
-        var date = new Date();
-		var ticks = date.getTime() - (date.getTimezoneOffset() * 60000);
+        var ticks = _getCurrentTicks();
 		var feature = [{
 			'geometry':{
 					'x':data.x,
