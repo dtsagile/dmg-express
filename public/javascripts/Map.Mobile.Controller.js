@@ -1,3 +1,8 @@
+// Namespace
+if (!this.Map || typeof this.Map !== 'object') {
+    this.Map = {};
+}
+
 //This is our static module
 Map.Controller = (function ($) {
     /////////////////

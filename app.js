@@ -25,7 +25,7 @@ var assetsManagerMiddleware = assetManager({
 		'route':/\/js\/app.mobile.js/
 		, 'path': './public/javascripts/'
 		        , 'dataType': 'javascript'
-		        , 'files': ['zepto.js' ,'microevent.js', 'SocketWrapper.js', 'leaflet.js', 'Map.Mobile.Controller.js']
+		        , 'files': ['zepto.js','microevent.js','SocketWrapper.js', 'leaflet.js', 'Map.Mobile.Controller.js']
      },
 
 	'css': {
