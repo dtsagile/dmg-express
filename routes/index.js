@@ -5,9 +5,12 @@
 
 exports.index = function(req, res){ 
   	var ua = req.header('user-agent');
-	    if(/iPhone/i.test(ua)) {
+	    if(/iPhone/i.test(ua) || /Android 4/i.test(ua)) {
 	        res.render('index.mobile.jade',{layout:false});
-	    } else {
+	    } else if(/Android 2/i.test(ua)){
+	        res.render('index.droid2.jade', {layout:false});
+        }
+        else{
 	        res.render('index.jade',{layout:false});
 	    }
   

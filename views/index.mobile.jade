@@ -13,6 +13,13 @@ html
       Map.Controller.init();
       });
     style
+      #fire{background-image:url(images/fire-mobile.png);background-position: -3px,-2px;} 
+      #deaths{background-image:url(images/deaths-mobile.png);background-position: -3px,-2px;}
+      #road-damage{background-image:url(images/road-damage-mobile.png);background-position: -3px,-2px;}
+      #road-impassable{background-image:url(images/road-impassable-mobile.png);background-position: -3px,-2px;}
+      #damaged-building{background-image:url(images/damaged-building-mobile.png);background-position: -3px,-2px;}
+      #destroyed-building{background-image:url(images/destroyed-building-mobile.png);background-position: -3px,-2px;}
+      #gps{background-image:url(images/deaths-mobile.png);background-position: -3px,-2px;} 
   body
     #header
       h1#app-title Field Damage Assessment
@@ -25,11 +32,11 @@ html
         .circle-container
           button.circle &#10006;
       ul.items
-        li(data-type='fire') 
-          img.icon(src='public/images/foundry-2.png')
-        li(data-type='fire') 
-          img.icon(src='public/images/foundry-2.png')
-        li(data-type='fire')  &#9733;
-        li(data-type='fire') 
-          img.icon(src='public/images/injuries-icon.png')
-        li#gps G
+        li(id='fire',data-type='fire') 
+        li(id='deaths',data-type='deaths') 
+        li(id='road-damage',data-type='road-damage')  
+        li(id='road-impassable',data-type='road-impassable')  
+        li(id='damaged-building',data-type='damaged-building')  
+        li(id='destroyed-building',data-type='destroyed-building') 
+        li(id='gps')  
+        

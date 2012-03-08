@@ -1,0 +1,127 @@
+                                                                                  #menu {
+  display: none;
+}
+
+/* line 24, ../sass/_layout.scss */
+#menu:checked ~ label .circle {
+  -moz-transform: rotate(0deg);
+  -webkit-transform: rotate(0deg);
+  -o-transform: rotate(0deg);
+  -ms-transform: rotate(0deg);
+  transform: rotate(0deg);
+}
+
+/* line 30, ../sass/_layout.scss */
+.circle-container {
+  position: fixed;
+  bottom: 10px;
+  left: 10px;
+  height: 40px;
+  width: 40px;
+  z-index:9999;
+  -moz-box-shadow: 0 0 10px rgba(0, 0, 0, 0.7);
+  -webkit-box-shadow: 0 0 10px rgba(0, 0, 0, 0.7);
+  -o-box-shadow: 0 0 10px rgba(0, 0, 0, 0.7);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.7);
+  -moz-border-radius: 20px;
+  -webkit-border-radius: 20px;
+  -o-border-radius: 20px;
+  -ms-border-radius: 20px;
+  -khtml-border-radius: 20px;
+  border-radius: 20px;
+}
+/* line 34, ../sass/_layout.scss */
+.circle-container .circle {
+  position: fixed;
+  bottom: 10px;
+  left: 10px;
+  height: 40px;
+  width: 40px;
+  cursor: pointer;
+  z-index: 9999;
+  border: 0px;
+  font-size: 30px;
+  line-height: 40px;
+  text-align: center;
+  color: white;
+  padding: 0px;
+  -moz-transition: all 0.2s linear;
+  -webkit-transition: all 0.2s linear;
+  -o-transition: all 0.2s linear;
+  transition: all 0.2s linear;
+  background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #e85738), color-stop(100%, #cb2c16));
+  background-image: -webkit-linear-gradient(top, #e85738, #cb2c16);
+  background-image: -moz-linear-gradient(top, #e85738, #cb2c16);
+  background-image: -o-linear-gradient(top, #e85738, #cb2c16);
+  background-image: -ms-linear-gradient(top, #e85738, #cb2c16);
+  background-image: linear-gradient(top, #e85738, #cb2c16);
+  -moz-box-shadow: 0 0 0 4px white, 0 0 0 5px rgba(0, 0, 0, 0.3);
+  -webkit-box-shadow: 0 0 0 4px white, 0 0 0 5px rgba(0, 0, 0, 0.3);
+  -o-box-shadow: 0 0 0 4px white, 0 0 0 5px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 0 0 4px white, 0 0 0 5px rgba(0, 0, 0, 0.3);
+  -moz-border-radius: 20px;
+  -webkit-border-radius: 20px;
+  -o-border-radius: 20px;
+  -ms-border-radius: 20px;
+  -khtml-border-radius: 20px;
+  border-radius: 20px;
+  -webkit-transform-style: preserve-3d;
+  transform-style: preserve-3d;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  appearance: none;
+  -moz-transform: rotate(45deg);
+  -webkit-transform: rotate(45deg);
+  -o-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+/* line 52, ../sass/_layout.scss */
+.circle-container .circle:active:before {
+  content: "";
+  display: block;
+  position: absolute;
+  top: -5px;
+  left: -5px;
+  right: -5px;
+  bottom: -5px;
+  background: rgba(0, 0, 0, 0.3);
+  pointer-events: none;
+  -moz-border-radius: 25px;
+  -webkit-border-radius: 25px;
+  -o-border-radius: 25px;
+  -ms-border-radius: 25px;
+  -khtml-border-radius: 25px;
+  border-radius: 25px;
+}
+.items li {
+  position: fixed;
+  z-index: 999;
+  bottom: 20px;
+  left: 18px;
+  display: block;
+  height: 26px;
+  width: 26px;
+  color: white;
+  text-align: center;
+  line-height: 26px;
+  font-size: 18px;
+  -moz-box-shadow: 0 0 0 4px white, 0 0 0 5px rgba(0, 0, 0, 0.3), inset 0 0 1px black;
+  -webkit-box-shadow: 0 0 0 4px white, 0 0 0 5px rgba(0, 0, 0, 0.3), inset 0 0 1px black;
+  -o-box-shadow: 0 0 0 4px white, 0 0 0 5px rgba(0, 0, 0, 0.3), inset 0 0 1px black;
+  box-shadow: 0 0 0 4px white, 0 0 0 5px rgba(0, 0, 0, 0.3), inset 0 0 1px black;
+  background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #433f3c), color-stop(100%, #44403d));
+  background-image: -webkit-linear-gradient(top, #433f3c, #44403d);
+  background-image: -moz-linear-gradient(top, #433f3c, #44403d);
+  background-image: -o-linear-gradient(top, #433f3c, #44403d);
+  background-image: -ms-linear-gradient(top, #433f3c, #44403d);
+  background-image: linear-gradient(top, #433f3c, #44403d);
+  -moz-border-radius: 13px;
+  -webkit-border-radius: 13px;
+  -o-border-radius: 13px;
+  -ms-border-radius: 13px;
+  -khtml-border-radius: 13px;
+  border-radius: 13px;
+  -webkit-transform-style: preserve-3d;
+  transform-style: preserve-3d;
+}

@@ -14,7 +14,8 @@ Map.Controller = (function ($) {
 		_disasterLayer,
 		_socket = {},
 		_isDriver = false,
-        _currentMarkerType = '';
+		_menuOpen = false,
+    _currentMarkerType = '';
 
     /////////////////
     //PRIVATE METHODS
@@ -64,12 +65,12 @@ Map.Controller = (function ($) {
 	
 		
 	function _getMarker(markerType) {
-        var iconUrl = 'images/'.concat(markerType).concat('.mobile.png'),
+        var iconUrl = 'images/'.concat(markerType).concat('-mobile.png'),
         icon = L.Icon.extend({   
-            iconSize: new L.Point(32, 37),
-            shadowSize: new L.Point(47, 37),
-            iconAnchor: new L.Point(13, 35),
-            //shadowUrl: 'images/custom-marker-shadow.png',
+            iconSize: new L.Point(32, 32),
+            //shadowSize: new L.Point(47, 37),
+            iconAnchor: new L.Point(16, 16),
+            shadowUrl: null,
             iconUrl: iconUrl
         });
         return new icon();
@@ -123,8 +124,30 @@ Map.Controller = (function ($) {
     me.getMap = function () { return _map; };
     me.init = function (args) {
         _initMap();
-		_initIO(); 
+		_initIO();       
 		
+		$('.circle-container').on('click','.circle', function(){
+		  console.log('got circle click');
+		  if(_menuOpen){      
+		    move('#fire').ease('in-out').y(0).rotate(-360).end();
+        move('#deaths').ease('in-out').y(0).rotate(-360).end();
+        move('#road-damage').ease('in-out').y(0).rotate(-360).end();
+        move('#road-impassable').ease('in-out').y(0).rotate(-360).end();
+        move('#damaged-building').ease('in-out').y(0).rotate(-360).end(); 
+        move('#destroyed-building').ease('in-out').y(0).rotate(-360).end(); 
+        move('#gps').ease('in-out').x(0).rotate(-360).end();
+		    _menuOpen = false;
+		  } else {
+		    move('#fire').ease('in-out').y(-210).rotate(-360).end();
+        move('#deaths').ease('in-out').y(-170).rotate(-360).end();
+        move('#road-damage').ease('in-out').y(-130).rotate(-360).end();
+        move('#road-impassable').ease('in-out').y(-90).rotate(-360).end();
+        move('#damaged-building').ease('in-out').y(-50).rotate(-360).end(); 
+        move('#destroyed-building').ease('in-out').y(-50).rotate(-360).end(); 
+        move('#gps').ease('in-out').x(50).rotate(-360).end();
+		    _menuOpen = true;
+		  }
+		});
 		$('ul.items').on('click', 'li', function(evt){ 
 		    //alert('got it');
             _currentMarkerType = $(this).data('type');

@@ -25,8 +25,9 @@ var assetsManagerMiddleware = assetManager({
 		'route':/\/js\/app.mobile.js/
 		, 'path': './public/javascripts/'
 		        , 'dataType': 'javascript'
-		        , 'files': ['zepto.js','microevent.js','SocketWrapper.js', 'leaflet.js', 'Map.Mobile.Controller.js']
-     },
+		        , 'files': ['zepto.js','microevent.js','SocketWrapper.js', 'leaflet.js','move.js', 'Map.Mobile.Controller.js']
+     },  
+     
 
 	'css': {
         'route': /\/css\/app.css/
@@ -39,8 +40,16 @@ var assetsManagerMiddleware = assetManager({
         'route': /\/css\/app.mobile.css/
         , 'path': './public/stylesheets/'
         , 'dataType': 'css'
-        , 'files': ['leaflet.css','menu.mobile.css', 'map.mobile.css']
-	}     
+        , 'files': ['leaflet.css','menu.vertical.css', 'map.mobile.css']
+	} 
+	
+	,'css-mobile-droid2': {
+        'route': /\/css\/app.mobile.droid2.css/
+        , 'path': './public/stylesheets/'
+        , 'dataType': 'css'
+        , 'files': ['leaflet.css','menu.vertical.droid2.css', 'map.mobile.css']
+	}
+	   
 }); 
 //assetsManagerMiddleware.debug(true);
 
