@@ -47,7 +47,7 @@ var util = require('util'),
     
     _getCurrentTicks = function(){
         var date = new Date();
-		return = date.getTime() - (date.getTimezoneOffset() * 60000);
+		return date.getTime() - (date.getTimezoneOffset() * 60000);
         
     };
     
