@@ -71,7 +71,7 @@ app.get('/wii', function(req, res){
   res.render('wiiphone', { layout: false })
 }); 
 
-app.listen(3000);
+app.listen(8080);
 console.log("Express server listening on port %d in %s mode", app.address().port, app.settings.env);   
                     
 //This is really all about the socketio part of the app
