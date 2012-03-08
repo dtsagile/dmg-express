@@ -49,7 +49,7 @@ var util = require('util'),
         var date = new Date();
 		return = date.getTime() - (date.getTimezoneOffset() * 60000);
         
-    }
+    };
     
     
     _addFeature = function(data, onSuccess, onError) {
