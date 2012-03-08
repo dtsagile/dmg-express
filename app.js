@@ -19,13 +19,13 @@ var assetsManagerMiddleware = assetManager({
 		,'route':/\/js\/app.js/
 		, 'path': './public/javascripts/'
 		        , 'dataType': 'javascript'
-		        , 'files': ['zepto.js','microevent.js','socketwrapper.js', 'leaflet.js', 'Map.Controller.js']
+		        , 'files': ['zepto.js','microevent.js','SocketWrapper.js', 'leaflet.js', 'Map.Controller.js']
     }, 
 	'js-mobile':{
 		'route':/\/js\/app.mobile.js/
 		, 'path': './public/javascripts/'
 		        , 'dataType': 'javascript'
-		        , 'files': ['zepto.js' ,'microevent.js', 'socketwrapper.js', 'leaflet.js', 'Map.Mobile.Controller.js']
+		        , 'files': ['zepto.js' ,'microevent.js', 'SocketWrapper.js', 'leaflet.js', 'Map.Mobile.Controller.js']
      },
 
 	'css': {
