@@ -29,10 +29,10 @@
   -webkit-transform-style: preserve-3d;
   transform-style: preserve-3d;
 }
-#fire{background-image:url(images/fire-mobile.png);background-position: -3px,-2px;bottom:20px;} 
-#deaths{background-image:url(images/deaths-mobile.png);background-position: -3px,-2px; bottom:60px;}
-#road-damage{background-image:url(images/road-damage-mobile.png);background-position: -3px,-2px; bottom:100px;}
-#road-impassable{background-image:url(images/road-impassable-mobile.png);background-position: -3px,-2px; bottom:140px;}
-#damaged-building{background-image:url(images/damaged-building-mobile.png);background-position: -3px,-2px; bottom:180px;}
-#destroyed-building{background-image:url(images/destroyed-building-mobile.png);background-position: -3px,-2px; bottom:220px;}
-#gps{background-image:url(images/gps-mobile.png);background-position: -3px,-2px; bottom:20px;left:60px;}
+#fire{background-image:url(/images/fire-mobile.png);background-position: -3px,-2px;bottom:20px;} 
+#deaths{background-image:url(/images/deaths-mobile.png);background-position: -3px,-2px; bottom:60px;}
+#road-damage{background-image:url(/images/road-damage-mobile.png);background-position: -3px,-2px; bottom:100px;}
+#road-impassable{background-image:url(/images/road-impassable-mobile.png);background-position: -3px,-2px; bottom:140px;}
+#damaged-building{background-image:url(/images/damaged-building-mobile.png);background-position: -3px,-2px; bottom:180px;}
+#destroyed-building{background-image:url(/images/destroyed-building-mobile.png);background-position: -3px,-2px; bottom:220px;}
+#gps{background-image:url(/images/gps-mobile.png);background-position: -3px,-2px; bottom:20px;left:60px;}
