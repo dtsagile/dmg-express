@@ -130,4 +130,12 @@
   -webkit-box-shadow: 0 0 0 4px #9EE304, 0 0 0 5px rgba(0, 0, 0, 0.3), inset 0 0 1px black;
   -o-box-shadow: 0 0 0 4px #9EE304, 0 0 0 5px rgba(0, 0, 0, 0.3), inset 0 0 1px black;
    box-shadow: 0 0 0 4px #9EE304, 0 0 0 5px rgba(0, 0, 0, 0.3), inset 0 0 1px black; 
-}
+}     
+
+  #fire{background-image:url(/images/fire-mobile.png);background-position: -3px,-2px;} 
+  #deaths{background-image:url(/images/deaths-mobile.png);background-position: -3px,-2px;}
+  #road-damage{background-image:url(/images/road-damage-mobile.png);background-position: -3px,-2px;}
+  #road-impassable{background-image:url(/images/road-impassable-mobile.png);background-position: -3px,-2px;}
+  #damaged-building{background-image:url(/images/damaged-building-mobile.png);background-position: -3px,-2px;}
+  #destroyed-building{background-image:url(/images/destroyed-building-mobile.png);background-position: -3px,-2px;}
+  #gps{background-image:url(/images/gps-mobile.png);background-position: -3px,-2px;}
