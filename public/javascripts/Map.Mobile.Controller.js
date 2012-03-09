@@ -97,9 +97,9 @@ Map.Controller = (function ($) {
 		_addPointToMap(data);
 		//send to the server to update all other maps
 		//and store in the database
-        _ioWrapper.addMapPoint(data);
-        // remove the handler   
-		_map.off('click', _mapClickHandler);
+    _ioWrapper.addMapPoint(data);
+     // remove the handler   
+		_map.off('click', _addPointMapClickHandler);
 	}      
 	
 	function _modeChange(data){  

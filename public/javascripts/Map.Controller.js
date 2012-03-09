@@ -8,8 +8,7 @@ Map.Controller = (function ($) {
     //PRIVATE VARIABLES
     var me = {},
         _map,
-        _mode = 'disaster',
-        _zombieLayer,
+        
         _disasterLayer,
         _ioWrapper = {},
         _addPointMapHandler = {},
@@ -25,9 +24,7 @@ Map.Controller = (function ($) {
             cloudmadeAttrib = 'Map data &copy; 2011 OpenStreetMap contributors, Imagery &copy; 2011 CloudMade';
         _disasterLayer = new L.TileLayer(cloudmadeUrl, {maxZoom: 18, attribution: cloudmadeAttrib});
         var start = new L.LatLng(0,0); // the venerable null island 
-        var midnightCommanderUrl = 'http://{s}.tile.cloudmade.com/e157614f2e585e679ee4a14551192a57/999/256/{z}/{x}/{y}.png';
-        _zombieLayer = new L.TileLayer(midnightCommanderUrl, {maxZoom: 18, attribution: cloudmadeAttrib});
-
+        
         _map.setView(start, 4).addLayer(_disasterLayer);
         
         _map.on('zoomend', function(e) {
@@ -47,33 +44,9 @@ Map.Controller = (function ($) {
                 _ioWrapper.pushMapState({lat: ctr.lat, lng: ctr.lng, zoom: e.target.getZoom()});
             }
         });
-        
-        $('#mode-switch').bind('click', function(){
-            //toggle the mode
-            if(_mode === 'disaster'){
-                _mode = 'zombie';
-            } else{
-                _mode = 'disaster';
-            }
-            _modeChange({mode:_mode});  
-        });
     }
 
-    function _modeChange(data){
-         if(data.mode == 'zombie'){
-            $('#mode-switch').text('Zombie Apocalypse Command Center');
-            _map.setView(new L.LatLng(33.82495405054108, -116.53849482536316), 16);
-            _map.removeLayer(_disasterLayer);
-            _map.addLayer(_zombieLayer);
-            $('body').toggleClass('zombie');        
-        }else{
-            $('#mode-switch').text('Damage Assessment Console');
-            //_mode='disaster';
-            _map.addLayer(_disasterLayer);
-            _map.removeLayer(_zombieLayer);
-            $('body').toggleClass('zombie');
-        }
-    }
+   
 
 
     //--------------------------------------
@@ -90,7 +63,6 @@ Map.Controller = (function ($) {
             _map.setView(new L.LatLng(data.lat,data.lng), data.zoom);    
         });
         _ioWrapper.bind('pointAdded', _addPointToMap);
-        _ioWrapper.bind('toggleAppState', _modeChange);  
         
         _ioWrapper.bind('wii', function(data){
             console.log('Got wii:', data);
@@ -135,7 +107,6 @@ Map.Controller = (function ($) {
         console.log('got a point...' , data);
         // send the message
         _ioWrapper.addMapPoint(data); 
-        //TODO: Change addPoint to accept a callback
         _addPointToMap(data);
         $('#message').text('');
         _map.off('click', _addPointMapClickHandler);
@@ -152,8 +123,6 @@ Map.Controller = (function ($) {
         _initIO();
         $('#toggle-drive').bind('click', function(){
             console.log('isDriving ' + _isDriver);    
-            
-            
             _isDriver = !_isDriver;
             $('#toggle-drive').toggleClass('ui-btn-active');
             console.log('isDriving ' + _isDriver);  
@@ -172,8 +141,6 @@ Map.Controller = (function ($) {
             _map.on('click', _addPointMapClickHandler); 
         });
 
-       
-        console.log('Done init');
     };
 
     return me;

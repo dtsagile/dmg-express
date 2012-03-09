@@ -5,29 +5,15 @@ head
     title Real-Time Damage Assessment Demo
     script(src='/socket.io/socket.io.js')
     link(href='http://fonts.googleapis.com/css?family=PT+Sans+Narrow', rel='stylesheet', type='text/css')
-    link(href='http://fonts.googleapis.com/css?family=Trade+Winds', rel='stylesheet', type='text/css')
     link(href='css/app.css', rel='stylesheet', type='text/css')  
     script(src='js/app.js', type='text/javascript')  
     script(type='text/javascript')
       $(function () {
-      console.log('initing the app...')
       Map.Controller.init();
       });
-    style
-      #drawing li{float:left;} 
-      .controls{float:right;}
-      #titles{float:left;width:601px;}
-      #subtitle{float:left;width:300px;}
-      #message{text-align:center;} 
-      .clear{clear:both;} 
-      #tools{float:right;margin-top:20px;} 
-      #tools ul li{cursor:pointer;} 
-      #tools ul li:hover{-webkit-transform:scale(1.2); -moz-transform:scale(1.2);}
-      #mode-switch{float:left;width:600px;}
-
     header
       div#titles
-        h1#mode-switch Damage Assessment Console
+        h1 Damage Assessment Console
         h4#subtitle.clear NodeJs + Socket.io
             span#userCount
       div#tools
