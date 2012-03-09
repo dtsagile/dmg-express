@@ -156,9 +156,9 @@ Map.Controller = (function ($) {
          }else{
            //this is GPS - lets do it!
            if (navigator.geolocation) {
-             navigator.geolocation.getCurrentPosition(function(position){
+               navigator.geolocation.getCurrentPosition(function(position){
                var loc = new L.LatLng(position.coords.latitude, position.coords.longitude);
-               _map.setView(loc, 12);
+               _map.setView(loc, 14);
              }, 
              function(msg){
                 alert('Error with GPS');
