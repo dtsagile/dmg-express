@@ -149,30 +149,26 @@ Map.Controller = (function ($) {
 		  }
 		});
 		$('ul.items').on('click', 'li', function(evt){ 
-		    //alert('got it');
+		    if($(this).is('#gps') == false){
             _currentMarkerType = $(this).data('type');
             //$('#message').text('Click on map to set point location.');
-            _map.on('click', _addPointMapClickHandler); 
-        });
-		/*
-		$('#add-fire').on('click',function(){
-			_currentMarker = 'activeFire';
-			_map.on('click', _mapClickHandler);
-		});
-		$('#add-death').on('click',function(){
-			_currentMarker = 'deaths';
-			_map.on('click', _mapClickHandler);
-		});
-		$('#add-building-damage').on('click',function(){
-			_currentMarker = 'buildingDamage';
-			_map.on('click', _mapClickHandler);
-		});
-
-		$('#add-injuries').on('click',function(){
-			_currentMarker = 'injuries';
-			_map.on('click', _mapClickHandler);
-		}); 
-		*/
+            _map.on('click', _addPointMapClickHandler);
+         }else{
+           //this is GPS - lets do it!
+           if (navigator.geolocation) {
+             navigator.geolocation.getCurrentPosition(function(position){
+               var loc = new L.LatLng(position.coords.latitude, position.coords.longitude);
+               _map.setView(loc, 12);
+             }, 
+             function(msg){
+                alert('Error with GPS');
+             });
+           } else {
+             error('not supported');
+           }
+         } 
+     });
+		
 		
     };
 
