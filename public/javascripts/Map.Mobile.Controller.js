@@ -8,8 +8,7 @@ Map.Controller = (function ($) {
     /////////////////
     //PRIVATE VARIABLES
     var me = {},
-        _map,   
-		_mode = 'disaster',
+    _map,   
 		_mcLayer,
 		_disasterLayer,
 		_socket = {},
@@ -48,8 +47,7 @@ Map.Controller = (function ($) {
             _map.setView(new L.LatLng(data.lat,data.lng), data.zoom);    
         });
         _ioWrapper.bind('pointAdded', _addPointToMap);
-        _ioWrapper.bind('toggleAppState', _modeChange);  
-        
+
         _ioWrapper.bind('wii', function(data){
             console.log('Got wii:', data);
             var s = _map.getSize().y / 2; 
@@ -99,25 +97,12 @@ Map.Controller = (function ($) {
 		//and store in the database
     _ioWrapper.addMapPoint(data);
      // remove the handler   
-		_map.off('click', _addPointMapClickHandler);
+		_map.off('click', _addPointMapClickHandler); 
+		//deactivate the button
+		$('.active').removeClass('active');
 	}      
 	
-	function _modeChange(data){  
-		console.log('got mode change to ' + data.mode )
-	     if(data.mode == 'zombie'){
-			
-			$('#app-title').text('Zombie Smash Tracker');
-			_map.setView(new L.LatLng(33.82495405054108, -116.53849482536316), 16);
-			_map.removeLayer(_disasterLayer);
-			_map.addLayer(_mcLayer);
-			$('body').toggleClass('zombie');		
-		}else{
-			$('#app-title').text('Disaster Response Demo');
-			_map.addLayer(_disasterLayer);
-			_map.removeLayer(_mcLayer);
-			$('body').toggleClass('zombie');
-		}
-	}
+	
     
     ////////////////
     //PUBLIC METHODS
@@ -152,6 +137,8 @@ Map.Controller = (function ($) {
 		    if($(this).is('#gps') == false){
             _currentMarkerType = $(this).data('type');
             //$('#message').text('Click on map to set point location.');
+            $('.active').removeClass('active'); 
+            $(this).addClass('active');
             _map.on('click', _addPointMapClickHandler);
          }else{
            //this is GPS - lets do it!

@@ -3,7 +3,7 @@ html
   head
     meta(charset='utf-8')
     meta(name='viewport', content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0')
-    title Node!
+    title Real-Time with Node
     script(src='socket.io/socket.io.js')
     link(rel='stylesheet', href='/css/app.mobile.droid2.css', type='test/css')
     link(href='http://fonts.googleapis.com/css?family=Six+Caps', rel='stylesheet', type='text/css')
@@ -19,10 +19,10 @@ html
     #map
     #path-menu
       ul.items
-        li(id='fire',data-type='fire') 
-        li(id='deaths',data-type='deaths') 
-        li(id='road-damage',data-type='road-damage')  
-        li(id='road-impassable',data-type='road-impassable')  
-        li(id='damaged-building',data-type='damaged-building')  
-        li(id='destroyed-building',data-type='destroyed-building') 
-        li(id='gps')
+        li(id='fire',class='tool',data-type='fire') 
+        li(id='deaths',class='tool',data-type='deaths') 
+        li(id='road-damage',class='tool',data-type='road-damage')  
+        li(id='road-impassable',class='tool',data-type='road-impassable')  
+        li(id='damaged-building',class='tool',data-type='damaged-building')  
+        li(id='destroyed-building',class='tool',data-type='destroyed-building') 
+        li(id='gps',class='tool')
