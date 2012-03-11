@@ -97,7 +97,9 @@ sio.set('transports', [
 sio.sockets.on('connection', function (socket) {  
 	userCount++;        
 	console.log('broadcasting userCountUpdate: ' + userCount);
-	socket.emit('userCountUpdate', {count: userCount});
+	socket.emit('userCountUpdate', {count: userCount});  
+	socket.broadcast.emit('userCountUpdate', {count: userCount});   
+	
    
     //when pushMapState comes in...
     socket.on('pushMapState', function (data) {
