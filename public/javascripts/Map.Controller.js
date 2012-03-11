@@ -72,7 +72,7 @@ Map.Controller = (function ($) {
 
 		_ioWrapper.bind('userCountUpdate', function(data){ 
 		   console.log('updating user count...', data);
-		   $('#userCount').text(data.count + ' users');
+		   $('#userCount').text(' Current Users: ' + data.count);
 		});
         
     }
@@ -93,7 +93,7 @@ Map.Controller = (function ($) {
         
     //add a point to the map
     function _addPointToMap(data) {
-        console.log('Adding point to the map... Marker:' + data.pointType);
+        //console.log('Adding point to the map... Marker:' + data.pointType);
         _map.addLayer(new L.Marker(new L.LatLng(data.lat, data.lng), { icon: _getMarker(data.pointType)}));
     }  
     

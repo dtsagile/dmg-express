@@ -38,7 +38,7 @@ var util = require('util'),
 
             res.on('end', function(){
   	          resJson = JSON.parse(pageData); 
-  	          console.log('Features: ', resJson.features)
+  	          //console.log('Features: ', resJson.features)
   	          onSuccess(resJson.features);
             });
           }); 
@@ -47,8 +47,7 @@ var util = require('util'),
     
     _getCurrentTicks = function(){
         var date = new Date();
-		return date.getTime() - (date.getTimezoneOffset() * 60000);
-        
+		    return date.getTime() - (date.getTimezoneOffset() * 60000);
     };
     
     
@@ -74,7 +73,7 @@ var util = require('util'),
 		});
 		  
 		console.log('...PostData:')
-        console.log(JSON.stringify(post_data));
+    console.log(JSON.stringify(post_data));
 		 // An object of options to indicate where to post to
 		 var options = {
 		     host: hostName,
@@ -96,8 +95,8 @@ var util = require('util'),
 		  res.setEncoding('utf8');
 		
 		  res.on('data', function (chunk) {
-		    console.log('BODY: ' + chunk); 
-			res.body += chunk;
+		    //console.log('BODY: ' + chunk); 
+			  res.body += chunk;
 		  });
 		 
 		  res.on('end',function(){

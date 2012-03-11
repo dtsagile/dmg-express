@@ -16,7 +16,9 @@
         text-shadow: 0 -1px #6A7770;
         word-spacing: 1px;
     }
-    h4{color:#FFF;font-family:Helvetica, Arial, sans-serif;}
+    h4{color:#FFF;font-family:Helvetica, Arial, sans-serif;}   
+    
+    
 
     .button {
         border-top: 1px solid #96d1f8;
@@ -95,7 +97,8 @@
     #drawing li{float:left;} 
     .controls{float:right;}
     #titles{float:left;width:601px;}
-    #subtitle{float:left;width:300px;}
+    #subtitle{float:left;width:570px;}
+    #userCount{float:right;} 
     #message{text-align:center;} 
     .clear{clear:both;} 
     #tools{float:right;margin-top:20px;} 

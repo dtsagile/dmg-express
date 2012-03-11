@@ -60,7 +60,6 @@ app.configure(function(){
   app.use(app.router);
   app.use(assetsManagerMiddleware);
   app.use(express.static(__dirname + '/public')); 
-  //app.register('.haml', require('hamljs'));
 });
 
 app.configure('development', function(){
@@ -74,7 +73,10 @@ app.configure('production', function(){
 
 
 // Routes 
-app.get('/', routes.index); 
+app.get('/', routes.index);
+
+
+ 
 app.get('/wii', function(req, res){
   res.render('wiiphone', { layout: false })
 }); 
@@ -93,21 +95,22 @@ sio.set('transports', [
 ]);
 
 sio.sockets.on('connection', function (socket) {  
-	userCount++;
-	socket.broadcast.emit('userCountUpdate', {count: userCount});
+	userCount++;        
+	console.log('broadcasting userCountUpdate: ' + userCount);
+	socket.emit('userCountUpdate', {count: userCount});
    
     //when pushMapState comes in...
     socket.on('pushMapState', function (data) {
-        console.log('Got pushMapState' + ' lat:'  +data.lat + ' lng:'  +data.lng + ' z:'  +data.zoom);
+        //console.log('Got pushMapState' + ' lat:'  +data.lat + ' lng:'  +data.lng + ' z:'  +data.zoom);
         //send it back out...
         socket.broadcast.emit('updateMap', { lat:data.lat, lng:data.lng , zoom:data.zoom })
-        console.log('Broadcast updateMap...');
+        //console.log('Broadcast updateMap...');
     });  
     
     socket.on('getPoints', function(){
         dataService.query(function(res){
             //should we pump them one at a time, or just shoot the data back? 
-            console.log('Got data out of the dataService: ', res);
+            //console.log('Got data out of the dataService: ', res);
             socket.emit('currentData',res); 
         }); 
     });
@@ -115,18 +118,18 @@ sio.sockets.on('connection', function (socket) {
     // when addPoint comes in...
     socket.on('addMapPoint', function(data, onAddPoint) {
         // make a call to save the point to the db     
-        console.log('addMapPoint called');
+        //console.log('addMapPoint called');
         dataService.insert({ x: data.lng, y: data.lat, pointType: data.pointType }, function() {  
-            console.log('Got addPoint: type: ' + data.pointType + ' lat:' + data.lat + ' lng:' + data.lng);
+            //console.log('Got addPoint: type: ' + data.pointType + ' lat:' + data.lat + ' lng:' + data.lng);
             socket.broadcast.emit('pointAdded', { lat:data.lat, lng:data.lng , pointType:data.pointType });
-            console.log('Broadcast pointAdded...');
+            //console.log('Broadcast pointAdded...');
             if(typeof onAddPoint === 'function')
                 onAddPoint();
         });
     });  
 
 	socket.on('mode-change', function(data){  
-		console.log('got mode change to ' + data.mode);
+		//console.log('got mode change to ' + data.mode);
 		socket.broadcast.emit('mode-change', data);
 	});   
 	
@@ -139,13 +142,13 @@ sio.sockets.on('connection', function (socket) {
 	}) ;
 	 
 	socket.on('zoom', function(data){  
-		console.log('Got wii Zoom: ' + data.z);  
+		//console.log('Got wii Zoom: ' + data.z);  
 		socket.broadcast.emit('zoom', data);
 	});   
 	socket.on('disconnect', function () {
 		userCount--;  
 		console.log('got socket disconnect... now ' + userCount + ' users.');
-		socket.broadcast.emit('userCountUpdate', {count: userCount}); 
+		socket.emit('userCountUpdate', {count: userCount}); 
 	});                    
 	                                                
 });

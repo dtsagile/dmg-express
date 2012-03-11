@@ -4,5 +4,6 @@ html, body, #map {height: 100%;margin:0;padding:0;}
 .circle-container{z-index:99999;}
 .leaflet-control-attribution{display:none;}
 .icon {margin-top:-12px; margin-left:-3px;}
-#header{height:37px;padding:0;margin:0;background-color:#3C494F; margin-top:-5px;}
+#header{height:37px;padding:0;margin:0;background-color:#3C494F; margin-top:-5px;} 
+#userCount{float:right;}
 #app-title{font-family: 'Six Caps', sans-serif;font-size:28px;font-weight:normal;text-transform:uppercase;margin:4px auto;padding-left:3px;color:#FFFFFF;}
