@@ -11,17 +11,17 @@ var util = require('util'),
     //http://ags2.dtsagile.com/ArcGIS/rest/services/EMS/DamageAssessments/FeatureServer/0/
     //query?objectIds=&where=1%3D1&time=&geometry=&geometryType=esriGeometryEnvelope&inSR=&s
     //patialRel=esriSpatialRelIntersects&relationParam=&outFields=*&returnGeometry=true&outSR=&returnCountOnly=false&returnIdsOnly=false&f=pjson
-        //var nd = new Date();
-        //var yesterdayTicks = nd.setDate(nd.getDate() - 1);
+        var nd = new Date();
+        var dateString = (nd.getMonth() + 1) + '/' + nd.getDate() + '/' + nd.getFullYear();
         
         var query = {
-            'where' :'1=1',
+            'where' :'EntryDate > \'' + dateString + '\'',
             'outFields':'*',
             'returnGeometry':true ,
             'f':'json',
             'outSR':'4326'
         };  
-       
+      console.log(query); 
 	    var options = {
 	        host: hostName,
 	        port:'80',

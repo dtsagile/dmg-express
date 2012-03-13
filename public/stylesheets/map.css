@@ -41,12 +41,24 @@
         font-family: Helvetica, Arial, Sans-Serif;
         text-decoration: none;
         vertical-align: middle;
+    }  
+    .ui-btn-active   {
+      background: #ffc563; /* Old browsers */
+      background: -moz-linear-gradient(top, #ffc563 0%, #fe9000 100%); /* FF3.6+ */
+      background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ffc563), color-stop(100%,#fe9000)); /* Chrome,Safari4+ */
+      background: -webkit-linear-gradient(top, #ffc563 0%,#fe9000 100%); /* Chrome10+,Safari5.1+ */
+      background: -o-linear-gradient(top, #ffc563 0%,#fe9000 100%); /* Opera 11.10+ */
+      background: -ms-linear-gradient(top, #ffc563 0%,#fe9000 100%); /* IE10+ */
+      background: linear-gradient(top, #ffc563 0%,#fe9000 100%); /* W3C */
     }
+    
+    /*
     .button:hover {
         border-top-color: #28597a;
         background: #28597a;
         color: #ccc;
-    }
+    }   
+    */
     .button:active {
         border-top-color: #1b435e;
         background: #1b435e;
@@ -103,4 +115,5 @@
     .clear{clear:both;} 
     #tools{float:right;margin-top:20px;} 
     #tools ul li{cursor:pointer;} 
-    #tools ul li:hover{-webkit-transform:scale(1.2); -moz-transform:scale(1.2);}
+    #tools ul li:hover{-webkit-transform:scale(1.2); -moz-transform:scale(1.2);}  
+    

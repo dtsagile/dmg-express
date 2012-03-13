@@ -122,10 +122,14 @@ Map.Controller = (function ($) {
         _initMap();
         _initIO();
         $('#toggle-drive').bind('click', function(){
-            console.log('isDriving ' + _isDriver);    
+              
             _isDriver = !_isDriver;
             $('#toggle-drive').toggleClass('ui-btn-active');
-            console.log('isDriving ' + _isDriver);  
+            if(_isDriver){
+                  $('#toggle-drive').text('Stop Driving');
+            } else{
+                  $('#toggle-drive').text('Drive Map'); 
+            } 
 
         });
         
