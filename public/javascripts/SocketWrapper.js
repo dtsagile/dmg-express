@@ -23,7 +23,7 @@ IOWrapper = function (){
 	   self.trigger('wii', data);
 	});
 	this._socket.on('zoom',function(data){
-		console.log('IOWrapper: got zoom ' + data.z);
+		console.log('IOWrapper: got zoom ' + data);
 		self.trigger('zoom', data);
 		
 	}); 

@@ -115,5 +115,7 @@
     .clear{clear:both;} 
     #tools{float:right;margin-top:20px;} 
     #tools ul li{cursor:pointer;} 
-    #tools ul li:hover{-webkit-transform:scale(1.2); -moz-transform:scale(1.2);}  
+    #tools ul li:hover{-webkit-transform:scale(1.2); -moz-transform:scale(1.2);}    
+    #toggle-drive{float:right;}
+    #current{width:800px;float:left;}
     

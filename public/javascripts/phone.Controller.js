@@ -7,10 +7,10 @@ Phone.Controller = (function ($) {
     /////////////////
     //PRIVATE VARIABLES
     var me = {},
-        _mapStyle=0,
+    _mapStyle=0,
 		_xoffset = 0,
 		_yoffset = 0,
-		_zoom=0,
+		_zoom=8,
 		_actionActive = false,
 		
 		_socket = {};
@@ -18,9 +18,9 @@ Phone.Controller = (function ($) {
     /////////////////
     //PRIVATE METHODS
     function _deviceMotionHandler(eventData){
-	 	var ac = eventData.acceleration;//IncludingGravity;
+	 	  var ac = eventData.acceleration;//IncludingGravity;
         		  
-		if(ac.z > 2 || ac.z < -2  ){
+		  if(ac.z > 2 || ac.z < -2  ){
 			var z = 0;
 			if(ac.z >0) z=1;
 			if(ac.z <0) z=-1;
@@ -80,18 +80,35 @@ Phone.Controller = (function ($) {
 	me.init = function (args) {
         
         _socket = io.connect();  
-		//_socket.set('transports', ['xhr-polling']);
         console.log('starting socket');
         _socket.on('connect', function () {
 		      console.log('Connected !');
-		      //socket.emit('msg', confirm('What is your message?'));
 		    });
 	   
 		                       
 		//register the handlers
-		window.addEventListener('devicemotion', _deviceMotionHandler, false); 
+		//window.addEventListener('devicemotion', _deviceMotionHandler, false); 
 		window.addEventListener('deviceorientation', _deviceOrientationHandler, false);
-		
+		$('#main').swipeRight(function(){   
+		  
+		  //zoom in  
+		  if(_zoom < 18){
+		     _zoom = _zoom +1; 
+		     console.log('zooming to ' + _zoom);
+		     _socket.emit('zoom',_zoom );
+		  }         
+		 
+		  
+		});
+		$('#main').swipeLeft(function(){
+		  //zoom out 
+		  console.log('got pinch in');     
+		  if(_zoom > 1){
+		    _zoom = _zoom -1;     
+		    console.log('zooming to ' + _zoom);
+		    _socket.emit('zoom',_zoom );   
+		  } 
+		});
 	  
 		
     };

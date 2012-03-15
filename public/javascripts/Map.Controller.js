@@ -8,7 +8,7 @@ Map.Controller = (function ($) {
     //PRIVATE VARIABLES
     var me = {},
         _map,
-        
+        _currentEvents = {},
         _disasterLayer,
         _ioWrapper = {},
         _addPointMapHandler = {},
@@ -23,8 +23,8 @@ Map.Controller = (function ($) {
         var cloudmadeUrl = 'http://{s}.tile.cloudmade.com/e157614f2e585e679ee4a14551192a57/997/256/{z}/{x}/{y}.png',
             cloudmadeAttrib = 'Map data &copy; 2011 OpenStreetMap contributors, Imagery &copy; 2011 CloudMade';
         _disasterLayer = new L.TileLayer(cloudmadeUrl, {maxZoom: 18, attribution: cloudmadeAttrib});
-        var start = new L.LatLng(0,0); // the venerable null island 
-        
+        var start = new L.LatLng(44.15068, -103.40332); // the venerable null island 
+                                
         _map.setView(start, 4).addLayer(_disasterLayer);
         
         _map.on('zoomend', function(e) {
@@ -57,7 +57,8 @@ Map.Controller = (function ($) {
         _ioWrapper = new IOWrapper();  
         
         //Get the existing points right away...
-        _ioWrapper.getPoints();
+        _ioWrapper.getPoints(); 
+        
         _ioWrapper.bind('updateMap', function(data){
             console.log('Got Update Map during init ' + data.lat + ' ' + data.lng + ' ' + data.zoom);
             _map.setView(new L.LatLng(data.lat,data.lng), data.zoom);    
@@ -68,12 +69,16 @@ Map.Controller = (function ($) {
             console.log('Got wii:', data);
             var s = _map.getSize().y / 2; 
            _map.panBy(new L.Point(data.x * s,data.y * s)); 
+        });
+        
+        _ioWrapper.bind('zoom',function(data){
+          _map.setZoom(data);
         });  
 
-		_ioWrapper.bind('userCountUpdate', function(data){ 
-		   console.log('updating user count...', data);
-		   $('#userCount').text(' Current Users: ' + data.count);
-		});
+		    _ioWrapper.bind('userCountUpdate', function(data){ 
+		      console.log('updating user count...', data);
+		      $('#userCount').text(' Current Users: ' + data.count);
+		    });
         
     }
     
@@ -93,9 +98,43 @@ Map.Controller = (function ($) {
         
     //add a point to the map
     function _addPointToMap(data) {
-        //console.log('Adding point to the map... Marker:' + data.pointType);
+        //console.log('Adding point to the map... Marker:' + data.pointType);   
+        _incrementEvents(data.pointType);
         _map.addLayer(new L.Marker(new L.LatLng(data.lat, data.lng), { icon: _getMarker(data.pointType)}));
     }  
+    
+    function _incrementEvents(eventName){
+      if(_currentEvents.hasOwnProperty(eventName)){
+             _currentEvents[eventName] = _currentEvents[eventName] + 1;            
+      }else{
+             _currentEvents[eventName] = 1;
+      }  
+      //update the message
+      $('#current').text('Last 24 hours:' +  _getCurrentEventsString());
+    }  
+    
+    function _getCurrentEventsString(){
+      //create a sensible human readable message string based on what's in the
+      //_currentEvents hashmap
+      var msg = '';
+      if(_currentEvents.hasOwnProperty('deaths')){
+        msg += ' ' +  _currentEvents['deaths'] + ' Deaths ';
+      }
+      if(_currentEvents.hasOwnProperty('fire')){
+        msg += ' ' + _currentEvents['fire'] + ' Fires ';
+      }
+      if(_currentEvents.hasOwnProperty('road-damage')){
+        msg +=  ' ' + _currentEvents['road-damage'] + ' Road Damage ';
+      } 
+      if(_currentEvents.hasOwnProperty('destroyed-building')){
+        msg += ' ' + _currentEvents['destroyed-building'] + ' Destroyed Buildings ';
+      }
+      if(_currentEvents.hasOwnProperty('damaged-building')){
+        msg += ' ' + _currentEvents['damaged-building'] + ' Damaged Buildings ';
+      }  
+      if(msg === ''){msg = 'No Hazards Reported.'}    
+      return msg;
+    }
     
     // invoke user selection of point type            
     function _addPointMapClickHandler(e) {

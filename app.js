@@ -144,7 +144,7 @@ sio.sockets.on('connection', function (socket) {
 	}) ;
 	 
 	socket.on('zoom', function(data){  
-		//console.log('Got wii Zoom: ' + data.z);  
+		console.log('Got wii Zoom: ' + data);  
 		socket.broadcast.emit('zoom', data);
 	});   
 	socket.on('disconnect', function () {
