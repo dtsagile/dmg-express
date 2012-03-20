@@ -75,7 +75,9 @@ app.configure('production', function(){
 // Routes 
 app.get('/', routes.index);
 
-
+app.get('/cmd', function(req, res){
+  res.render('cmd', { layout: false })
+});
  
 app.get('/wii', function(req, res){
   res.render('wiiphone', { layout: false })
